@@ -1,22 +1,20 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { setName, setPhone, addContact } from '../../redux/contactsSlice';
 import PropTypes from 'prop-types';
-import { addContact } from '../components/contactsOperations';
+import { addContact, setName, setPhone } from 'components/contactsSlice';
 
-const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const contacts = useSelector(state => state.contacts);
+export const ContactForm = () => {
+  const { name, phone, items } = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (contacts.find(contact => contact.name === name)) {
+    if (items.find(contact => contact.name === name)) {
       alert(`${name} вже є у списку контактів`);
       return;
     }
-    dispatch(addContact(name, phone));
-    setName('');
-    setPhone('');
+    dispatch(addContact());
   };
 
   return (
@@ -24,14 +22,14 @@ const ContactForm = () => {
       <input
         type="text"
         value={name}
-        onChange={e => setName(e.target.value)}
+        onChange={e => dispatch(setName(e.target.value))}
         placeholder="Ім'я"
         required
       />
       <input
         type="tel"
         value={phone}
-        onChange={e => setPhone(e.target.value)}
+        onChange={e => dispatch(setPhone(e.target.value))}
         placeholder="Телефон"
         required
       />
