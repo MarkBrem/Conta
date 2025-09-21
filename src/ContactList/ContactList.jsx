@@ -29,5 +29,3 @@ export const ContactList = () => {
 ContactList.propTypes = {
   contacts: PropTypes.array,
 };
-
-// fds
