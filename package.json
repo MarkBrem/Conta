@@ -2,7 +2,7 @@
   "name": "conta",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://markbrem.github.io/Conta/",
+  "homepage": "https://markbrem.github.io/conta/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
     "@testing-library/jest-dom": "^5.16.3",
